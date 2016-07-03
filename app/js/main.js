@@ -2,6 +2,9 @@
 
 'use strict';
 
+  require('angular');
+  require('angular-route');
+  
   angular.module('angularWeatherClient', ['ngRoute'])
 
   .config([
