@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/okachynskyy/angular-weather-client#readme",
   "devDependencies": {
+    "brfs": "^1.4.3",
     "del": "^2.2.1",
     "gulp": "^3.9.1",
     "gulp-browserify": "^0.5.1",
