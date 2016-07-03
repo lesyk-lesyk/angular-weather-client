@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+- '0.11'
+env:
+  global:
+  - secure: QfCYJKFDlbdThkglYQveCG6S/8L77fsBy8k9lh89WDNm4C6pGfyczi/jtULZZXp0FS4uVs/4bI8xHLZL5Ne4vP380Mjl9RDefpE7Qhplt+ot4MKX3aHcKWpKNMMnxv85qRJ28vUyQbd+R+fcNyjwOtuHOQ6EErgjpL3VjUtxQ2I=
+  - secure: Am2989lFfvpv/V8NRTCoiJZf6had0JZOVdkK4++pDD31w6ftSTqWIzWkQu9vSd6Vg3+QsnOisaH0jOA5GIddFrg4w+rS9BiMJkAXaqSV8sILalRAH+S62/3yVRTSlPsRDBsna2zopZQW6ZDeKC/WImAcY8At+ndR2WP9giyEbHA=
+before_install:
+- travis_retry gem install bitballoon
+script: npm install
+script: npm run build
+script: bitballoon deploy dist --access-token=92d8e77662b66d52fdcfff1b9bb26aeafafe5da112c978b0456ca08e6165e1eb --site-id=angular-weather-client.bitballoon.com
+branches:
+  only:
+    - master
