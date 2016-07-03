@@ -1,0 +1,27 @@
+{
+  "name": "angular-weather-client",
+  "description": "angular weather client with D3.js graphs",
+  "main": "index.js",
+  "authors": [
+    "Oleksiy"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "angular",
+    "js",
+    "d3"
+  ],
+  "homepage": "https://github.com/okachynskyy/angular-weather-client",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "app/bower_components",
+    "test",
+    "tests",
+    "dist"
+  ],
+  "dependencies": {
+    "angular": "^1.5.7",
+    "angular-route": "^1.5.7"
+  }
+}
