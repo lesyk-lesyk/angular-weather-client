@@ -8,11 +8,17 @@ module.exports = {
 ForecastController.$inject = ['Forecast'];
 function ForecastController(Forecast) {
   var $ctrl = this;
+  $ctrl.cities = ['Lviv', 'Kyiv', 'Odessa'];
 
-  $ctrl.test = test;
+  Forecast.fetchFiveForecast($ctrl.cities[0])
+    .then(function (data){
+      $ctrl.weatherData=data;
+  });
 
-  function test() {
-    return Forecast.test();
-  }
-
+  $ctrl.changeCity = function (city) {
+    Forecast.fetchFiveForecast(city)
+      .then(function (data){
+        $ctrl.weatherData=data;
+    });
+  };
 }

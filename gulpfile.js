@@ -13,6 +13,7 @@ var uglify = require('gulp-uglify');
 var minifyCSS = require('gulp-minify-css');
 var browserify = require('gulp-browserify');
 var concat = require('gulp-concat');
+var less = require('gulp-less');
 
 // tasks
 gulp.task('lint', function () {
@@ -21,35 +22,53 @@ gulp.task('lint', function () {
     .pipe(jshint.reporter('default'))
     .pipe(jshint.reporter('fail'));
 });
+
 gulp.task('clean', function () {
-  return del(['./dist/*', './app/js/bundled.js']);
+  return del(['./dist/*', './app/js/bundled.js', './app/css/bundled.css']);
 });
-gulp.task('minify-css', function () {
+
+gulp.task('styles', function() {
+  return gulp
+    .src('./app/**/*.less')
+    .pipe(less())
+    .pipe(concat('bundled.css'))
+    .pipe(gulp.dest('./app/css/'));
+});
+
+gulp.task('stylesDist', function() {
   var opts = { comments: true, spare: true };
-  gulp.src('./app/**/*.css')
+  return gulp
+    .src('./app/**/*.less')
+    .pipe(less())
+    .pipe(concat('bundled.css'))
     .pipe(minifyCSS(opts))
-    .pipe(gulp.dest('./dist/'));
+    .pipe(gulp.dest('./dist/css/'));
 });
+
 gulp.task('copy-html-files', function () {
   gulp.src('./app/*.html')
     .pipe(gulp.dest('dist/'));
 });
+
 gulp.task('copy-img-files', function () {
   gulp.src('./app/img/*')
     .pipe(gulp.dest('dist/img/'));
 });
+
 gulp.task('connect', function () {
   connect.server({
     root: 'app/',
     port: 8888
   });
 });
+
 gulp.task('connectDist', function () {
   connect.server({
     root: 'dist/',
     port: 9999
   });
 });
+
 gulp.task('browserify', function() {
   gulp.src(['./app/index.js'])
   .pipe(browserify({
@@ -60,6 +79,7 @@ gulp.task('browserify', function() {
   .pipe(concat('bundled.js'))
   .pipe(gulp.dest('./app/js'))
 });
+
 gulp.task('browserifyDist', function() {
   gulp.src(['./app/index.js'])
   .pipe(browserify({
@@ -79,12 +99,16 @@ gulp.task('js-watcher', function() {
   gulp.watch(['./app/components/**'], ['browserify']);
 });
 
+gulp.task('less-watcher', function() {
+  gulp.watch(['./app/**/*.less'], ['styles']);
+});
+
 // default task
 gulp.task('default', function () {
   runSequence(
     ['clean'],
-    ['lint', 'browserify', 'connect'],
-    ['js-watcher']
+    ['lint', 'browserify', 'styles', 'js-watcher', 'less-watcher'],
+    ['connect']
   );
 });
 
@@ -92,6 +116,6 @@ gulp.task('default', function () {
 gulp.task('build', function () {
   runSequence(
     ['clean'],
-    ['minify-css', 'browserifyDist', 'copy-html-files', 'copy-img-files']
+    ['browserifyDist', 'stylesDist', 'copy-html-files', 'copy-img-files']
   );
 });

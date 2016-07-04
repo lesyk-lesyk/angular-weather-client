@@ -1,0 +1,73 @@
+@import "../../node_modules/bootstrap/less/bootstrap.less";
+
+@main-background-color: #E5EAEE;
+@navbar-border-color: #CAD1D8;
+@heading-border-color: #9AA5AE;
+
+@default-primary-color: #2A3E4F;
+@light-primary-color: #70838D;
+@primary-text-color: #8692BB;
+@divider-color: #D4D8DC;
+@accent-color: #777777;
+
+/* ------  General  ------*/
+
+body {
+  background-color: @main-background-color;
+  color: black;
+}
+
+#main-content {
+  max-width: 780px;
+}
+
+/* ------  Navbar  ------*/
+
+#main-navbar{
+  background-color: #F2F4F6;
+  height: 35px;
+  border-bottom: 1px solid @navbar-border-color;
+  padding: 8px;
+}
+#main-navbar #navbar-title {
+  font-size: 0.9em;
+  color: @accent-color;
+}
+
+/* ------  Forecast  ------*/
+
+#forecast {
+  margin-top: 40px;
+}
+
+#city-select-label{
+  color: @default-primary-color;
+  font-size: 0.8em;
+}
+.data-heading {
+  font-weight: 100;
+  font-size: 1.4em;
+  color: @default-primary-color;
+  border-bottom: 1px solid @heading-border-color;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  letter-spacing: 1.44px;
+  padding-bottom: 5px;
+}
+
+.data-table {
+  background-color: white;
+}
+
+.data-table caption {
+  color: @light-primary-color;
+  background-color: white;
+  font-weight: 600;
+  font-size: 0.8em;
+  text-align: left;
+  padding-bottom: 8px;
+}
+
+.data-table .value {
+  text-align: right;
+}

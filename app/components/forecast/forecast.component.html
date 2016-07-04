@@ -1,2 +1,62 @@
-<p>test component</p>
-<p>{{ $ctrl.test() }}</p>
+<section id="forecast">
+
+  <div class="row">
+    <div class="col-xs-12">
+      <label id="city-select-label" for="city-select">Select city:</label>
+      <select 
+        name="city" id="city-select"
+        ng-init="selectedCity = $ctrl.cities[0]" 
+        ng-model="selectedCity" 
+        ng-options="x for x in $ctrl.cities"
+        ng-change="$ctrl.changeCity(selectedCity)">
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <h2 class="data-heading">Temperature</h2>
+      <div id="temperatre-graph">D3...</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <h2 class="data-heading">Additional Data</h2>
+    </div>
+    <div class="col-xs-12">
+      <div id="additional-data" class="row">
+        <div id="conditions" class="col-xs-12 col-sm-4">
+          <table class="table table-condensed data-table">
+            <caption>{{ "weather conditions" | uppercase }}</caption>
+            <tr ng-repeat="obj in $ctrl.weatherData.weatherConditions">
+              <td class="date"> {{ obj.date }}</td>
+              <td class="value"> {{ obj.condition }}</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="col-xs-12 col-sm-4">
+          <table id="humidity" class="table table-condensed data-table">
+            <caption>{{ "humidity" | uppercase }}</caption>
+            <tr ng-repeat="obj in $ctrl.weatherData.humidity">
+              <td class="date"> {{ obj.date }}</td>
+              <td class="value"> {{ obj.humidity }} %</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="col-xs-12 col-sm-4">
+          <table id="wind-speed" class="table table-condensed data-table">
+            <caption>{{ "wind speed" | uppercase }}</caption>
+            <tr ng-repeat="obj in $ctrl.weatherData.windSpeed">
+            <td class="date"> {{ obj.date }}</td>
+              <td class="value"> {{ obj.speed }} m/s</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>

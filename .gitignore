@@ -39,3 +39,4 @@ jspm_packages
 # Built code
 dist
 app/js/bundled.js
+app/css/bundled.css

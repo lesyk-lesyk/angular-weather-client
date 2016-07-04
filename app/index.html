@@ -8,11 +8,13 @@
   <title>Angular weather client</title>
   <link rel="shortcut icon" href="/img/favicon.ico">
   <!-- styles -->
-  <link rel="stylesheet" href="/css/main.css"/>
+  <link rel="stylesheet" href="/css/bundled.css"/>
 </head>
 <body>
-  <p>Angular weather client</p>
-  <div ng-view></div>
+  <navbar></navbar>
+  <main id="main-content" class="container">
+    <div ng-view></div>
+  </main>
 
   <!-- scripts -->
   <script src="/js/bundled.js"></script>
