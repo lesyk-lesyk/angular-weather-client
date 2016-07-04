@@ -1,0 +1,29 @@
+/* ------  General  ------*/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #E5EAEE;
+  color: black;
+}
+
+#main-content {
+  max-width: 727px;
+  margin: auto;
+}
+
+/* ------  Navbar  ------*/
+#main-navbar{
+  background-color: #F2F4F6;
+  height: 35px;
+  border-bottom: 1px solid #CAD1D8;
+  padding: 8px;
+}
+#main-navbar #navbar-title {
+  font-size: 0.9em;
+  font-family: Verdana, Geneva, sans-serif;
+  color: #777777;
+}
