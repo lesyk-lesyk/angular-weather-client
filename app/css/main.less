@@ -1,3 +1,5 @@
+@import "../../node_modules/bootstrap/less/bootstrap.less";
+
 @main-background-color: #E5EAEE;
 @navbar-border-color: #CAD1D8;
 @heading-border-color: #9AA5AE;
@@ -10,13 +12,6 @@
 
 /* ------  General  ------*/
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: Tahoma, Geneva, sans-serif;
-}
-
 body {
   background-color: @main-background-color;
   color: black;
@@ -24,7 +19,6 @@ body {
 
 #main-content {
   max-width: 780px;
-  margin: auto;
 }
 
 /* ------  Navbar  ------*/
@@ -44,8 +38,6 @@ body {
 
 #forecast {
   margin-top: 40px;
-  padding-left: 10px;
-  padding-right: 10px;
 }
 
 #city-select-label{
@@ -55,38 +47,27 @@ body {
 .data-heading {
   font-weight: 100;
   font-size: 1.4em;
-  color: #2A3E4F;
-  border-bottom: 1px solid @default-primary-color;
+  color: @default-primary-color;
+  border-bottom: 1px solid @heading-border-color;
   margin-top: 30px;
   margin-bottom: 15px;
   letter-spacing: 1.44px;
   padding-bottom: 5px;
 }
 
-#additional-data {
-  text-align: center;
-}
-
 .data-table {
-  display: inline-block;
-  width: 30%;
   background-color: white;
-  padding: 8px;
-  margin: 8px;
 }
 
 .data-table caption {
   color: @light-primary-color;
+  background-color: white;
   font-weight: 600;
   font-size: 0.8em;
   text-align: left;
   padding-bottom: 8px;
 }
 
-@media only screen and (max-width: 768px) {
-  .data-table {
-    display: block;
-    width: 100%;
-    margin: 14px 0px;
-  }
+.data-table .value {
+  text-align: right;
 }
