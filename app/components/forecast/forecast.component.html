@@ -1,3 +1,45 @@
 <section id="forecast">
-  Forecast
+
+  <label id="city-select-label" for="city-select">Select city:</label>
+  <select name="city" id="city-select">
+    <option value="kyiv">Kyiv</option>
+    <option value="lviv">Lviv</option>
+    <option value="odessa">Odessa</option>
+  </select>
+
+  <h2 class="data-heading">Temperature</h2>
+  <div id="temperatre-graph">D3...</div>
+
+  <h2 class="data-heading">Additional Data</h2>
+  <div id="additional-data">
+    <div class="data-table">
+      <table id="conditions">
+        <caption>{{ "weather conditions" | uppercase }}</caption>
+        <tr ng-repeat="obj in $ctrl.weatherConditions">
+          <td id="date"> {{ obj.date }}</td>
+          <td id="value"> {{ obj.condition }}</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="data-table">
+      <table id="humidity">
+        <caption>{{ "humidity" | uppercase }}</caption>
+        <tr ng-repeat="obj in $ctrl.humidity">
+          <td id="date"> {{ obj.date }}</td>
+          <td id="value"> {{ obj.humidity }}</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="data-table">
+      <table id="wind-speed" >
+        <caption>{{ "wind speed" | uppercase }}</caption>
+        <tr ng-repeat="obj in $ctrl.windSpeed">
+          <td id="date"> {{ obj.date }}</td>
+          <td id="value"> {{ obj.speed }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
 </section>
