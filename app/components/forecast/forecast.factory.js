@@ -30,9 +30,13 @@ function ForecastFactory($http) {
           date: formatDate, 
           humidity: data.list[i].main.humidity
         });
+        var speed = "N/A";
+        if (data.list[i].wind !== null){
+          speed = data.list[i].wind.speed;
+        }
         weatherData.windSpeed.push({
           date: formatDate, 
-          speed: data.list[i].wind.speed
+          speed: speed
         });
       }
       return weatherData;
